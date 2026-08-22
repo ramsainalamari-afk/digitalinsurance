@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Insurance Claim Processing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">🛡️</div>
+            <div>
+                <h2>InsureTech</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#" class="active" onclick="showSection('dashboard')">
+                🏠 Dashboard
+            </a>
+
+            <a href="#" onclick="showSection('claims')">
+                📄 Claims
+            </a>
+
+            <a href="#" onclick="showSection('risk')">
+                📊 Risk Assessment
+            </a>
+
+            <a href="#" onclick="showSection('policies')">
+                🛡️ Policies
+            </a>
+
+            <a href="#" onclick="showSection('submit')">
+                ➕ Submit Claim
+            </a>
+
+            <a href="#" onclick="showSection('reports')">
+                📈 Reports
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>Logged in as</p>
+            <strong>Admin User</strong>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <!-- Header -->
+        <header class="header">
+            <div>
+                <h1 id="pageTitle">Insurance Dashboard</h1>
+                <p>Digital Claim Processing & Risk Assessment</p>
+            </div>
+
+            <div class="profile">
+                <div class="notification">🔔</div>
+                <div class="avatar">AU</div>
+            </div>
+        </header>
+
+
+        <!-- Dashboard -->
+        <section id="dashboard" class="section active-section">
+
+            <div class="welcome">
+                <div>
+                    <h2>Welcome to InsureTech 👋</h2>
+                    <p>Manage insurance claims, policies and risk assessments from one platform.</p>
+                </div>
+
+                <button class="primary-btn" onclick="showSection('submit')">
+                    + Submit New Claim
+                </button>
+            </div>
+
+
+            <!-- Statistics -->
+            <div class="stats">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">📄</div>
+                    <div>
+                        <p>Total Claims</p>
+                        <h2>1,248</h2>
+                        <span class="positive">+12.5%</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">⏳</div>
+                    <div>
+                        <p>Pending Claims</p>
+                        <h2>186</h2>
+                        <span class="warning">Needs Review</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">✓</div>
+                    <div>
+                        <p>Approved Claims</p>
+                        <h2>942</h2>
+                        <span class="positive">75.5%</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon red">⚠</div>
+                    <div>
+                        <p>High Risk Claims</p>
+                        <h2>37</h2>
+                        <span class="danger">Needs Attention</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Recent Claims</h3>
+                        <button onclick="showSection('claims')">View All</button>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Claim ID</th>
+                                    <th>Customer</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Risk</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>CLM-10245</td>
+                                    <td>Rahul Kumar</td>
+                                    <td>Vehicle</td>
+                                    <td>₹85,000</td>
+                                    <td><span class="risk low">Low</span></td>
+                                    <td><span class="status approved">Approved</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>CLM-10244</td>
+                                    <td>Priya Sharma</td>
+                                    <td>Health</td>
+                                    <td>₹1,25,000</td>
+                                    <td><span class="risk medium">Medium</span></td>
+                                    <td><span class="status pending">Pending</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>CLM-10243</td>
+                                    <td>Arun Kumar</td>
+                                    <td>Property</td>
+                                    <td>₹3,50,000</td>
+                                    <td><span class="risk high">High</span></td>
+                                    <td><span class="status review">Review</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>CLM-10242</td>
+                                    <td>Sneha Reddy</td>
+                                    <td>Vehicle</td>
+                                    <td>₹65,000</td>
+                                    <td><span class="risk low">Low</span></td>
+                                    <td><span class="status approved">Approved</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="card risk-card">
+                    <div class="card-header">
+                        <h3>Risk Overview</h3>
+                    </div>
+
+                    <div class="risk-circle">
+                        <div>
+                            <strong>78%</strong>
+                            <span>Low Risk</span>
+                        </div>
+                    </div>
+
+                    <div class="risk-bars">
+
+                        <div>
+                            <span>Low Risk</span>
+                            <strong>78%</strong>
+                            <div class="bar">
+                                <div class="bar-low"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span>Medium Risk</span>
+                            <strong>17%</strong>
+                            <div class="bar">
+                                <div class="bar-medium"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span>High Risk</span>
+                            <strong>5%</strong>
+                            <div class="bar">
+                                <div class="bar-high"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Claims Section -->
+        <section id="claims" class="section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Claim Management</h2>
+                    <p>View and process insurance claims.</p>
+                </div>
+
+                <button class="primary-btn" onclick="showSection('submit')">
+                    + New Claim
+                </button>
+            </div>
+
+            <div class="card">
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        id="claimSearch"
+                        placeholder="Search claim ID or customer..."
+                        onkeyup="searchClaims()"
+                    >
+
+                    <select>
+                        <option>All Status</option>
+                        <option>Pending</option>
+                        <option>Approved</option>
+                        <option>Rejected</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+
+                    <table id="claimTable">
+
+                        <thead>
+                            <tr>
+                                <th>Claim ID</th>
+                                <th>Customer</th>
+                                <th>Policy</th>
+                                <th>Claim Type</th>
+                                <th>Amount</th>
+                                <th>Risk</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>CLM-10245</td>
+                                <td>Rahul Kumar</td>
+                                <td>POL-54821</td>
+                                <td>Vehicle</td>
+                                <td>₹85,000</td>
+                                <td><span class="risk low">Low</span></td>
+                                <td><span class="status approved">Approved</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>CLM-10244</td>
+                                <td>Priya Sharma</td>
+                                <td>POL-54820</td>
+                                <td>Health</td>
+                                <td>₹1,25,000</td>
+                                <td><span class="risk medium">Medium</span></td>
+                                <td><span class="status pending">Pending</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>CLM-10243</td>
+                                <td>Arun Kumar</td>
+                                <td>POL-54819</td>
+                                <td>Property</td>
+                                <td>₹3,50,000</td>
+                                <td><span class="risk high">High</span></td>
+                                <td><span class="status review">Review</span></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Risk Assessment -->
+        <section id="risk" class="section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Risk Assessment</h2>
+                    <p>Evaluate claim risk using claim information.</p>
+                </div>
+            </div>
+
+            <div class="form-card">
+
+                <h3>Risk Assessment Form</h3>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Claim Amount</label>
+                        <input type="number" id="claimAmount" placeholder="Enter amount">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Previous Claims</label>
+                        <input type="number" id="previousClaims" placeholder="Number of previous claims">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Policy Duration</label>
+                        <select id="policyDuration">
+                            <option value="low">More than 3 years</option>
+                            <option value="medium">1 - 3 years</option>
+                            <option value="high">Less than 1 year</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Document Verification</label>
+                        <select id="documents">
+                            <option value="verified">Verified</option>
+                            <option value="partial">Partially Verified</option>
+                            <option value="unverified">Not Verified</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button class="primary-btn" onclick="calculateRisk()">
+                    Calculate Risk
+                </button>
+
+                <div id="riskResult" class="risk-result">
+                    Enter claim details and calculate the risk.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Policies -->
+        <section id="policies" class="section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Policy Management</h2>
+                    <p>View active insurance policies.</p>
+                </div>
+            </div>
+
+            <div class="policy-grid">
+
+                <div class="policy-card">
+                    <span>VEHICLE INSURANCE</span>
+                    <h3>POL-54821</h3>
+                    <p>Rahul Kumar</p>
+                    <strong>₹5,00,000 Coverage</strong>
+                    <div class="policy-active">Active</div>
+                </div>
+
+                <div class="policy-card">
+                    <span>HEALTH INSURANCE</span>
+                    <h3>POL-54820</h3>
+                    <p>Priya Sharma</p>
+                    <strong>₹10,00,000 Coverage</strong>
+                    <div class="policy-active">Active</div>
+                </div>
+
+                <div class="policy-card">
+                    <span>PROPERTY INSURANCE</span>
+                    <h3>POL-54819</h3>
+                    <p>Arun Kumar</p>
+                    <strong>₹25,00,000 Coverage</strong>
+                    <div class="policy-active">Active</div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Submit Claim -->
+        <section id="submit" class="section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Submit New Claim</h2>
+                    <p>Enter claim details for processing.</p>
+                </div>
+            </div>
+
+            <div class="form-card">
+
+                <h3>Claim Information</h3>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Customer Name</label>
+                        <input type="text" id="customerName" placeholder="Enter customer name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Policy Number</label>
+                        <input type="text" id="policyNumber" placeholder="POL-XXXXX">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Claim Type</label>
+                        <select id="claimType">
+                            <option>Vehicle</option>
+                            <option>Health</option>
+                            <option>Property</option>
+                            <option>Travel</option>
+                            <option>Life</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Claim Amount</label>
+                        <input type="number" id="amount" placeholder="₹ Enter amount">
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Description</label>
+                        <textarea id="description" rows="5"
+                            placeholder="Describe the incident..."></textarea>
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Upload Supporting Document</label>
+                        <input type="file" id="document">
+                    </div>
+
+                </div>
+
+                <button class="primary-btn" onclick="submitClaim()">
+                    Submit Claim
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Reports -->
+        <section id="reports" class="section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Reports & Analytics</h2>
+                    <p>Insurance claim processing overview.</p>
+                </div>
+            </div>
+
+            <div class="report-grid">
+
+                <div class="report-card">
+                    <span>Total Claims</span>
+                    <h2>1,248</h2>
+                    <p>Claims processed</p>
+                </div>
+
+                <div class="report-card">
+                    <span>Approved</span>
+                    <h2>942</h2>
+                    <p>75.5% approval rate</p>
+                </div>
+
+                <div class="report-card">
+                    <span>Rejected</span>
+                    <h2>120</h2>
+                    <p>9.6% rejection rate</p>
+                </div>
+
+                <div class="report-card">
+                    <span>Under Review</span>
+                    <h2>186</h2>
+                    <p>Claims pending</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
